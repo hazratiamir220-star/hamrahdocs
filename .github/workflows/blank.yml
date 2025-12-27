@@ -24,10 +24,9 @@ jobs:
         run: |
           echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 -d > hamrahdocs.keystore
 
-      - name: Build APK
+      - name: Build APK (Release)
         run: |
           ./gradlew assembleRelease
-
         env:
           SIGNING_STORE_PASSWORD: ${{ secrets.SIGNING_STORE_PASSWORD }}
           SIGNING_KEY_PASSWORD: ${{ secrets.SIGNING_KEY_PASSWORD }}
@@ -38,4 +37,3 @@ jobs:
         with:
           name: HamrahDocs-APK
           path: app/build/outputs/apk/release/*.apk
-
